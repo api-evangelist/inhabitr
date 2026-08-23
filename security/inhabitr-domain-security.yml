@@ -1,0 +1,43 @@
+generated: '2026-08-23'
+method: probed
+source: live DNS/TLS/HTTP probes of the Inhabitr hosts named in apis.yml
+note: >-
+  Two production hosts. inhabitr.com is the consumer furniture-rental storefront and
+  inhabitr.ai is the commercial-real-estate furnishing site; both are Inhabitr-operated.
+  Neither host sets Strict-Transport-Security and neither registrable domain is signed
+  with DNSSEC or publishes a CAA record. Both publish SPF and DMARC, with inhabitr.com
+  at the stricter p=reject.
+hosts:
+- host: inhabitr.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 16 23:59:59 2027 GMT
+  hsts: false
+- host: inhabitr.ai
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov  4 05:43:48 2026 GMT
+  hsts: false
+domains:
+- domain: inhabitr.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: inhabitr.ai
+  dnssec: false
+  caa: []
+  spf: true
+  spf_record: v=spf1 include:dc-aa8e722993._spfm.inhabitr.ai ~all
+  dmarc: true
+  dmarc_policy: quarantine
+observations:
+- id: unhandled-exception-leak
+  severity: informational
+  detail: >-
+    https://inhabitr.com/blog returns HTTP 200 carrying an unhandled PHP exception and a
+    full Slim framework stack trace, disclosing the application path /var/www/b2c and the
+    vendor dependency tree. Observed 2026-08-23. Recorded as a public-surface observation,
+    not a vulnerability report; no system was accessed and no control was defeated.
+  evidence: https://inhabitr.com/blog

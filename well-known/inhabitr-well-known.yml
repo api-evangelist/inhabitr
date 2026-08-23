@@ -1,0 +1,97 @@
+generated: '2026-08-23'
+method: probed
+source: direct HTTP probe of every Inhabitr host found in apis.yml
+note: >-
+  Nothing was found. Neither Inhabitr host serves a /.well-known/ document. The two
+  hosts fail the probe in two different ways and both are recorded verbatim below.
+  inhabitr.com is a Slim/PHP application whose router 302s every unmatched path to
+  /home and answers a handful of paths with a 200 carrying a "404 Not Found - Error
+  details" HTML body — a soft-404 catch-all, not a document. A control probe of
+  /.well-known/thisdoesnotexist-xyz123 returned the byte-identical 2194-byte body as
+  every real /.well-known/ path, which is the proof it is a catch-all. inhabitr.ai is
+  a Next.js site that returns an honest HTTP 404 for every /.well-known/ path.
+  NO WellKnown and NO SecurityTxt pointer is emitted: nothing was served, so nothing
+  is claimed.
+hit_count: 0
+hosts:
+  - host: https://inhabitr.com
+    note: >-
+      Soft-404 catch-all. Every /.well-known/ path answers HTTP 200 with an identical
+      2194-byte PHP error body reading "404 Not Found - Error details: [404] Not
+      found."; no path returns a document.
+    soft_404_control:
+      path: /.well-known/thisdoesnotexist-xyz123
+      status: 200
+      bytes: 2194
+      body_starts: '<pre>404 Not Found - Error details: [404] Not found.'
+      verdict: catch-all — a 200 on this host is not evidence of a document
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: null
+        note: soft-404 body, byte-identical to the control probe; not a document
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: null
+        note: soft-404 body, byte-identical to the control probe; not a document
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: null
+        note: soft-404 body, byte-identical to the control probe; not a document
+      - path: /.well-known/api-catalog
+        status: 200
+        file: null
+        note: soft-404 body, byte-identical to the control probe; not a document
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        file: null
+        note: soft-404 body, byte-identical to the control probe; not a document
+      - path: /.well-known/agent-card.json
+        status: 200
+        file: null
+        note: soft-404 body, byte-identical to the control probe; not a document
+      - path: /.well-known/agent.json
+        status: 200
+        file: null
+        note: soft-404 body, byte-identical to the control probe; not a document
+  - host: https://inhabitr.ai
+    note: Next.js site; honest HTTP 404 on every /.well-known/ path.
+    soft_404_control:
+      path: /.well-known/thisdoesnotexist-xyz123
+      status: 404
+      bytes: 22524
+      verdict: honest 404 — the 404s below are real absences
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+  - host: https://staging.inhabitr.com
+    note: >-
+      Non-production environment discovered via DNS; probed only to complete contract
+      discovery. 301s every /.well-known/ path and 404s every spec path. No pointer
+      is emitted for a staging host and none should be.
+    documents:
+      - path: /.well-known/security.txt
+        status: 301
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 301
+        file: null

@@ -1,17 +1,33 @@
 aid: inhabitr
 name: Inhabitr
-description: 'Inhabitr is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Inhabitr is a Chicago-founded furnishing company that operates an AI-assisted
+  furniture rental and procurement platform for commercial real estate and residential
+  customers. Its business side (inhabitr.ai) furnishes hospitality, multifamily, student
+  housing, short-term rental, co-living, senior living and office properties end to
+  end — design, sourcing, procurement, delivery, installation and asset tracking —
+  while its consumer storefront (inhabitr.com) rents furniture, sets and decor to households
+  on flexible terms with a browser-based Home Designer tool. The company describes
+  real-time connectivity to warehouses, manufacturers and retailers as the "furniture
+  cloud" behind its bidding and fulfillment, but it publishes no public developer program,
+  API documentation, or machine-readable contract of any kind as of this profiling pass.'
 url: https://raw.githubusercontent.com/api-evangelist/inhabitr/refs/heads/main/apis.yml
+image: https://inhabitr.ai/logo.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-23'
 modified: '2026-08-23'
 tags:
 - Company
+- Furniture Rental
+- Commercial Real Estate
+- Property Technology
+- Hospitality
+- Multifamily
+- Interior Design
+- Procurement
+- E-Commerce
+- Furnishing
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +35,50 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/inhabitr-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://inhabitr.com/home
+- type: Blog
+  url: https://inhabitr.ai/blog-news
+- type: TermsOfService
+  url: https://inhabitr.ai/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://inhabitr.com/privacy-policy
+- type: SignUp
+  url: https://inhabitr.com/register
+- type: Login
+  url: https://inhabitr.com/login
+- type: Support
+  url: https://inhabitr.ai/contact-us
+- type: LLMsTxt
+  url: llms/inhabitr-llms.txt
+- type: Plans
+  url: plans/inhabitr-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/inhabitr-rate-limits.yml
+x-enrichment:
+  date: '2026-08-23'
+  status: minimal
+  artifacts_added: 5
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Inhabitr ships no developer surface at all — inhabitr.com is a Slim/PHP furniture-rental
+    storefront that 302s /openapi.json, /api-docs, /docs, /graphql and /llms.txt to /home,
+    and inhabitr.ai returns an honest 404 for every one of them, with no api./docs./developer.
+    subdomain resolving on either domain and no github.com/inhabitr organization.
+  evidence:
+    - url: https://inhabitr.com/openapi.json
+      status: 302
+    - url: https://inhabitr.ai/openapi.json
+      status: 404
+    - url: https://inhabitr.ai/llms.txt
+      status: 404
+    - url: https://inhabitr.ai/.well-known/agent-card.json
+      status: 404
+    - url: https://api.inhabitr.com/
+      status: 0
+  checked: '2026-08-23'

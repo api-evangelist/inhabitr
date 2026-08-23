@@ -1,0 +1,12 @@
+generated: '2026-08-23'
+method: searched
+source: https://inhabitr.ai/our-technology
+limit_count: 0
+note: >-
+  No rate limits are documented because no public API is documented. Contract discovery
+  on 2026-08-23 probed inhabitr.com, inhabitr.ai and the staging host for OpenAPI,
+  Swagger, GraphQL, MCP and /.well-known/ surfaces and found none, so there is no
+  published request quota, window, burst allowance, 429 behaviour, or RateLimit-*
+  response header to record. limit_count: 0 is an observed zero.
+rate_limits: []
+headers: []

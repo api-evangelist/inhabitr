@@ -1,0 +1,15 @@
+generated: '2026-08-23'
+method: searched
+source: https://inhabitr.ai/solutions
+docs: https://inhabitr.ai/contact-us
+plan_count: 0
+note: >-
+  Inhabitr publishes no plans, tiers, or list pricing of any kind — for an API or for
+  its furnishing service. The commercial site (inhabitr.ai) routes every commercial
+  enquiry through a "Get Started" / "Contact Us" form and states outcomes ("up to 30%
+  cost savings", "15-150 day project completion") rather than prices. The consumer
+  storefront (inhabitr.com) quotes per-item and per-set monthly rental prices inside the
+  catalog at checkout, but publishes no subscription tier or plan table. Because Inhabitr
+  ships no public API, there is no API plan surface to record at all. plan_count: 0 is an
+  observed zero, not an unchecked field.
+plans: []
