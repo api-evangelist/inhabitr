@@ -11,6 +11,17 @@ description: 'Inhabitr is a Chicago-founded furnishing company that operates an 
   cloud" behind its bidding and fulfillment, but it publishes no public developer program,
   API documentation, or machine-readable contract of any kind as of this profiling pass.'
 url: https://raw.githubusercontent.com/api-evangelist/inhabitr/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://inhabitr.ai/logo.png
 x-type: company
 x-source: harvest:secondary-market
